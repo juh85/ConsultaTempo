@@ -14,11 +14,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    overflow: hidden;
-    /* para ficar o rodape fixo*/
-    flex-shrink: 0;
-    /* para ficar o container fixo*/
-
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
 }
 
 .cabecalho {
@@ -28,19 +27,25 @@ body {
     align-items: center;
     padding: 15px;
     text-align: center;
-    margin-top: auto;
+    margin-top: 0;
+}
+
+.cabecalho h1 {
+    margin: 0;
+    color: #344281;
 }
 
 .container {
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
     background-color: rgb(255 255 255 / 60%);
     border-radius: 15px;
     border: 2px solid #344281;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     padding: 20px;
     text-align: center;
-    margin-bottom: 100px;
-
+    margin: 20px auto 100px;
+    box-sizing: border-box;
 }
 
 
@@ -52,10 +57,11 @@ body {
     gap: 10px;
     margin-bottom: 10px;
     width: 100%;
+    position: relative;
 }
 
 .form-control input {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(241, 241, 241, 0.836);
     border: 2px solid #344281;
     border-radius: 8px;
     padding: 10px 15px;
@@ -89,8 +95,13 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     border: 2px solid #344281;
     transition: all 0.3s ease;
+}
 
-
+.botao:hover {
+    background-color: #344281;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .rodape {
@@ -104,4 +115,58 @@ body {
 .link {
     text-decoration: none;
     color: #96475b;
+}
+
+
+.sugestoes {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 5%;
+    width: 90%;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 6px 0;
+    margin: 0;
+    display: none; /* Escondido por padrão */
+    list-style: none;
+}
+
+.sugestoes:not(:empty) {
+    display: block; /* Mostra apenas quando tiver conteúdo */
+}
+
+.sugestoes li {
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    text-align: left;
+}
+
+.sugestoes li:hover {
+    background: #f5f7fa;
+}
+
+#resultado {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(241, 241, 241, 0.836);
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    display: none; /* Escondido por padrão */
+}
+
+#resultado:not(:empty) {
+    display: block; /* Mostra apenas quando tiver conteúdo */
+}
+
+#resultado p {
+    margin: 8px 0;
+    color: #344281;
+}
+
+#resultado p strong {
+    color: #96475b;
+    font-size: 18px;
 }

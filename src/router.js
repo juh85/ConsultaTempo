@@ -47,6 +47,28 @@ router.get('/clima/:cidade', async (req, res) => {
     }
 });
 
+//Rota para buscar cidades
+router.get('/cidades/:nome', async (req, res) => {
+    const nome = decodeURIComponent(req.params.nome);
+    const apiKey = process.env.API_KEY;
+
+    const url = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(nome)}&limit=5&appid=${apiKey}`;
+
+    try {
+        const response = await axios.get(url);
+
+        const cidades = response.data.map(c => ({
+            nome: c.name,
+            estado: c.state || '',
+            pais: c.country
+        }));
+
+        res.json(cidades);
+    } catch (error) {
+        res.status(500).json({ error:'Erro ao buscar cidades'});
+        
+    }
+});
 
 
 export default router;
