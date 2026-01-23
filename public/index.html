@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Previsão do tempo</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="cabecalho">
+        <h1>Previsão do tempo</h1>
+    </div>
+
+    <div class="container">
+        <div id="intro">
+            <h2> Bem-vindo a mais um dia de sol</h2>
+            <p>Aqui você vai encontrar a previsão do tempo para o seu dia.</p>
+       
+            <form id="form-tempo" class="form">
+                <div class="form-control">
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" placeholder="Digite o nome da cidade">
+                </div>
+                <button onclick="previsaoTempo()" class="botao">Buscar clima</button>
+
+                <div id="resultado">
+                    <p>A previsão do tempo para a cidade de</p>
+                    <p> Temperatura:</p>
+                    <p>Condições do tempo:</p>
+                    <p>Umidade:</p>
+                    <p>Eventos do sol e lua:</p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <footer class="rodape">
+        <p> Desenvolvido por <a class="link" href="https://www.linkedin.com/in/juliana-cordeiro0">Juliana Cordeiro</a>
+        </p>
+    </footer>
+
+
+</body>
