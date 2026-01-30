@@ -50,7 +50,7 @@ http://localhost:3000/index.html
 └── README.md  
 
 
-<img width="470" height="380" alt="image" src="https://github.com/user-attachments/assets/b5ec00b1-2fcc-4f32-9e99-6c0354425853" />
+https://github.com/user-attachments/assets/779dacca-b499-481c-a982-054cd24585ff
 
 
 
