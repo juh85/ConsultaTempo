@@ -44,11 +44,16 @@ async function previsaoTempo() {
             <p>Descrição: ${data.descricao}</p>
             <p>Umidade: ${data.umidade}%</p>
         `;
+        // trocar imagem
+    trocarImagem(data.descricao);
+
     } catch (error) {
         resultado.innerHTML = '<p>Não foi possível buscar a previsão.</p>';
         resultado.style.display = 'block';
         console.error('Erro ao buscar previsão:', error);
     }
+    
+    
 }
 
 
@@ -137,3 +142,77 @@ document.addEventListener('click', (e) => {
         sugestacoes.style.display = 'none';
     }
 });
+
+
+// função para trocar imagem
+function trocarImagem(descricao) {
+    if(!descricao) {
+        console.warn('Descrição não fornecida');
+        return;
+    }
+
+    const imgPadrao = document.getElementById('img-padrao');
+    const imgClima = document.getElementById('img-clima');
+
+    if(!imgPadrao || !imgClima) {
+        console.warn('Divs de imagem não encontradas');
+        return;
+    }
+
+    const desc = descricao.toLowerCase().trim();
+    console.log('Descrição recebida:', desc);
+    
+    // Nome do arquivo SEM extensão
+    let imagem = 'padraoClear';
+
+    // Verifica tempestade primeiro (mais específico)
+    if (desc.includes('tempestade') || desc.includes('trovoada') || desc.includes('storm') || desc.includes('thunderstorm')) {
+        imagem = 'storm';
+    }
+    // Verifica neve
+    else if (desc.includes('neve') || desc.includes('snow')) {
+        imagem = 'snow';
+    }
+    // Verifica chuva (várias variações)
+    else if (desc.includes('chuva') || desc.includes('rain') || desc.includes('chuvoso') || desc.includes('garoa') || desc.includes('drizzle')) {
+        imagem = 'rain';
+    }
+    // Verifica nublado (várias variações)
+    else if (desc.includes('nublado') || desc.includes('nuvens') || desc.includes('cloud') || 
+             desc.includes('encoberto') || desc.includes('overcast')) {
+        imagem = 'cloudSky';
+    }
+    // Verifica céu limpo
+    else if (desc.includes('limpo') || desc.includes('clear') || desc.includes('céu limpo') || 
+             desc.includes('ensolarado') || desc.includes('sol') || desc.includes('sunny')) {
+        imagem = 'clearSky';
+    }
+
+    console.log('Imagem selecionada:', imagem);
+
+    // Caminho completo da imagem
+    const caminhoImagem = `/imagens/${imagem}.jpg`;
+    
+    // carregar a imagem antes de mostrar
+    const img = new Image();
+    img.src = caminhoImagem;
+
+    img.onload = () => {
+        console.log('Imagem carregada com sucesso:', caminhoImagem);
+        imgClima.style.backgroundImage = `url(${caminhoImagem})`;
+
+        // esconde imagem padrao e mostra imagem do clima
+        imgPadrao.classList.remove('img-ativo');
+        imgPadrao.classList.add('img');
+        imgClima.classList.remove('img');
+        imgClima.classList.add('img-ativo');
+        
+        console.log('Classes aplicadas - imgPadrao:', imgPadrao.className, 'imgClima:', imgClima.className);
+    }
+    
+    img.onerror = () => {
+        console.error('Erro ao carregar imagem do clima:', caminhoImagem);
+        // Mantém a imagem padrão se houver erro
+    };
+
+}

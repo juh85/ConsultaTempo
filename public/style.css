@@ -5,11 +5,7 @@
 }
 
 body {
-    background-image: url(./imagens/noite.jpg) !important;
-    background-size: cover;
-    background-repeat: no-repeat;
     min-height: 100vh;
-    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,6 +16,34 @@ body {
     padding: 0;
     position: relative;
 }
+.img-ativo {
+    opacity: 1 !important;
+    z-index: 1 !important;
+}
+
+.img {
+    opacity: 0 !important;
+    z-index: -1 !important;
+}
+
+#img-padrao,
+#img-clima {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 0.8s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#img-padrao {
+    background-image: url(/imagens/padraoClear.jpg);
+}
 
 .cabecalho {
     width: 100%;
@@ -29,6 +53,8 @@ body {
     padding: 15px;
     text-align: center;
     margin-top: 0;
+    position: relative;
+    z-index: 2;
 }
 
 .cabecalho h1 {
@@ -41,12 +67,13 @@ body {
     max-width: 800px;
     background-color: rgb(255 255 255 / 60%);
     border-radius: 15px;
-    border: 2px solid #344281;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     padding: 20px;
     text-align: center;
     margin: 20px auto;
     box-sizing: border-box;
+    position: relative;
+    z-index: 2;
 }
 
 
@@ -76,7 +103,7 @@ body {
 }
 
 .form-control input:focus {
-    border-color: #96475b;
+    border-color: #344281;
     box-shadow: 0 0 6px 2px rgba(150, 71, 91, 0.2);
     background-color: #fff;
 }
@@ -112,11 +139,15 @@ body {
     position: absolute;
     bottom: 0;
     padding-bottom: 20px;
+    z-index: 2;
+    color:#fff;
+    
+
 }
 
 .link {
     text-decoration: none;
-    color: #96475b;
+    color: #fff;
 }
 
 
