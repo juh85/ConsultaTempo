@@ -1,6 +1,6 @@
 let timeout = null;
 
-// Função para buscar a previsão do tempo
+
 async function previsaoTempo() {
     const cidadeInput = document.getElementById('cidade');
     const resultado = document.getElementById('resultado');
@@ -165,24 +165,24 @@ function trocarImagem(descricao) {
     // Nome do arquivo SEM extensão
     let imagem = 'padraoClear';
 
-    // Verifica tempestade primeiro (mais específico)
+    
     if (desc.includes('tempestade') || desc.includes('trovoada') || desc.includes('storm') || desc.includes('thunderstorm')) {
         imagem = 'storm';
     }
-    // Verifica neve
+    
     else if (desc.includes('neve') || desc.includes('snow')) {
         imagem = 'snow';
     }
-    // Verifica chuva (várias variações)
+    
     else if (desc.includes('chuva') || desc.includes('rain') || desc.includes('chuvoso') || desc.includes('garoa') || desc.includes('drizzle')) {
         imagem = 'rain';
     }
-    // Verifica nublado (várias variações)
+    
     else if (desc.includes('nublado') || desc.includes('nuvens') || desc.includes('cloud') || 
              desc.includes('encoberto') || desc.includes('overcast')) {
         imagem = 'cloudSky';
     }
-    // Verifica céu limpo
+    
     else if (desc.includes('limpo') || desc.includes('clear') || desc.includes('céu limpo') || 
              desc.includes('ensolarado') || desc.includes('sol') || desc.includes('sunny')) {
         imagem = 'clearSky';
